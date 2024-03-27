@@ -10,6 +10,6 @@ export class EmployeeService {
   constructor(private httpClient : HttpClient) { }
 
   get(page: number, size: number): Observable<any>{
-    return this.httpClient.get("http://localhost:8080/employees");
+    return this.httpClient.get<any>("http://localhost:8080/employees?page="+page+"&size="+size+"");
   }
 }

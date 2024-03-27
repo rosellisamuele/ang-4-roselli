@@ -23,9 +23,12 @@ export class EmployeeTableComponent {
   }
 
   getEmployee() : void {
+
     this.employeeService.get(this.page,this.size).subscribe(remoteData => {
       this.data = remoteData;
+      console.log(this.data);
     })
+
   }
 
   changePage(delta : number) : void {
