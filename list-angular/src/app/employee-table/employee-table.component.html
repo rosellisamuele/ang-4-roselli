@@ -1,1 +1,28 @@
-<p>employee-table works!</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Birth date</th>
+        <th>Gender</th>
+        <th>Hire date</th>
+        <th></th>
+    </tr>
+
+    <tr *ngFor="let item of data._embedded.employees">
+        <td>{{item.id}}</td>
+        <td>{{item.firstName}}</td>
+        <td>{{item.lastName}}</td>
+        <td>{{item.birthDate}}</td>
+        <td>{{item.gender}}</td>
+        <td>{{item.hireDate}}</td>
+        <th><button type="button">Delete</button></th>
+    </tr>
+
+    <tr>
+        <td><button type="button" (click)="changePage(-1)" [disabled]="page == 0">Previous</button></td>
+        <td>{{page}}</td>
+        <td><button type="button" (click)='changePage(1)'>Next</button></td>
+    </tr>
+</table>
+
