@@ -12,4 +12,14 @@ export class EmployeeService {
   get(page: number, size: number): Observable<any>{
     return this.httpClient.get<any>("http://localhost:8080/employees?page="+page+"&size="+size+"");
   }
+  
+  delete(id : number) : Observable<any> {
+    return this.httpClient.delete("http://localhost:8080/employees/"+id+"");
+  }   
+
+  post(body : any) : Observable<any> {
+    return this.httpClient.post("http://localhost:8080/employees",body);
+  }
+
+
 }
