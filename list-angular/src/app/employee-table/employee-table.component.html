@@ -35,11 +35,12 @@
 
 <div class="pageComponent">
 
-    <input type="text" #firstName placeholder="First name" required><br>
-    <input type="text" #lastName placeholder="Last name" required><br>
-    <input type="text" #birthDate placeholder="Birth date" required><br>
-    <input type="text" #gender placeholder="Gender" required><br>
-    <input type="text" #hireDate placeholder="Hire date" required><br>
-    <button (click)="addEmployee(firstName.value, lastName.value, birthDate.value, gender.value, hireDate.value)">Add Employee</button>
-
+    <form id="employeeForm" #myForm="ngForm" (ngSubmit)="addEmployee(myForm)">
+        <input type="text" name="birthDate" ngModel placeholder="Birth date" required><br>
+        <input type="text" name="firstName" ngModel placeholder="First name" required><br>
+        <input type="text" name="gender" ngModel placeholder="Gender" required><br>
+        <input type="text" name="hireDate" ngModel placeholder="Hire date" required><br>
+        <input type="text" name="lastName" ngModel placeholder="Last name" required>
+        <button type="submit">Add Employee</button>
+    </form>
 </div>

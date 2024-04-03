@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { NgFor, NgIf } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-table',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, FormsModule],
   templateUrl: './employee-table.component.html',
   styleUrl: './employee-table.component.css'
 })
@@ -14,6 +15,14 @@ export class EmployeeTableComponent {
   data : any = null;
   remoteData : any;
   result : any;
+
+  employee = {
+    birthDate : String,
+    firstName : String,
+    gender : String,
+    hireDate : String,
+    lastName : String
+  };
 
   constructor(private employeeService : EmployeeService) {}
 
@@ -45,18 +54,12 @@ export class EmployeeTableComponent {
     })
     location.reload();
   }
+/*
+  //addEmployee(birthDate : String,firstName : String,gender : String, hireDate : String, id: number,lastName : String) : void {
+    addEmployee(employee: any):void {
 
-  addEmployee(firstName : String, lastName : String, birthDate : String, gender : String, hireDate : String) : void {
-
-    let employee = {
-      "birthDate" : birthDate,
-      "firstName" : firstName,
-      "lastName" : lastName,
-      "gender" : gender,
-      "hireDate" : hireDate,
-      
-    }
-
+    //const employee = `{"birthDate": "`+birthDate+`","firstName": "`+firstName+`","gender": "`+gender+`","hireDate": "`+hireDate+`","id":"`+id+`","lastName":"`+lastName+`",}`;
+    //const employee = JSON.stringify()
     let response = this.employeeService.post(employee).subscribe(remoteData => {
       this.data = remoteData;
       console.log(this.data);
@@ -64,6 +67,20 @@ export class EmployeeTableComponent {
     })
     
     console.log(response);
+    location.reload;
+  }
+*/
+
+  addEmployee(form : NgForm) : void {
+    console.log(JSON.stringify(form.value));
+    let response = this.employeeService.post(JSON.stringify(form.value)).subscribe(remoteData => {
+      this.data = remoteData;
+      console.log(this.data);
+      this.totalPages = remoteData.page.totalPages;
+    })
+
+    console.log(response);
+    location.reload;
   }
 
   changePage(delta : number) : void {
