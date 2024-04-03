@@ -1,4 +1,50 @@
-.pageComponent{
-    display: inline-block;
-    width: 50%;
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.inputForm{
+    display: block;
+    margin: auto;
+}
+div.inputDiv{
+    display: block;
+    text-align: center;
+    padding: 20px 20px 20px 20px;
+    border: 1px solid black;
+    margin: 20px auto 20px auto;
+    width: 60%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+input.inputField{
+    margin: auto 10px auto 10px;
+}
+button.submitBtn{
+    margin-top: 10px;
+    color: rgb(42, 75, 42);
+    background-color: lightgreen;
+    border: 2px outset rgb(42, 75, 42);
+}
+button.deleteBtn{
+    margin-top: 10px;
+    color: rgb(65, 9, 9);
+    background-color: rgb(194, 118, 118);
+    border: 2px outset rgb(65, 9, 9);
+}
+button.modifyBtn{
+    margin-top: 10px;
+    color: rgb(65, 39, 17);
+    background-color: rgb(180, 121, 72);
+    border: 2px outset rgb(65, 39, 17);
+}
+div.employeeTable{
+    margin-left:auto;
+    margin-right: auto;
+
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+table{
+    margin-left:auto;
+    margin-right: auto;
 }

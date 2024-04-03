@@ -73,14 +73,20 @@ export class EmployeeTableComponent {
 
   addEmployee(form : NgForm) : void {
     console.log(JSON.stringify(form.value));
-    let response = this.employeeService.post(JSON.stringify(form.value)).subscribe(remoteData => {
+    this.employeeService.post(JSON.stringify(form.value)).subscribe(remoteData => {
       this.data = remoteData;
       console.log(this.data);
       this.totalPages = remoteData.page.totalPages;
     })
 
-    console.log(response);
     location.reload;
+
+    form.resetForm();
+  }
+
+  modifyEmployee(item : any) : void {
+    let id = item.id;
+    console.log(id);
   }
 
   changePage(delta : number) : void {

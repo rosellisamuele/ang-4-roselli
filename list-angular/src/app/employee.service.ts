@@ -23,7 +23,7 @@ export class EmployeeService {
         'Content-Type' : 'application/json'
       })
     };
-    return this.httpClient.post("http://localhost:8080/employees",'"'+body+'"',httpOptions);
+    return this.httpClient.post("http://localhost:8080/employees",body,httpOptions);
   }
 
 
