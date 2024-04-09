@@ -14,6 +14,23 @@
     </form>
 </div>
 
+
+<div class="inputDiv">
+    <form id="modifyForm" #modForm="ngForm" class="inputForm" (ngSubmit)="submitNewData(modForm)" ngModel="modFormData">
+        <input type="number" class="inputField" disabled name="id" [(ngModel)]="modFormData.id" placeholder="Id" required>
+        <input type="text" class="inputField" name="birthDate" [(ngModel)]="modFormData.birthDate" placeholder="Birth date" required>
+        <input type="text" class="inputField" name="firstName" [(ngModel)]="modFormData.firstName" placeholder="First name" required>
+        <label for="gender" >Gender: </label>
+        <select name="gender" ngModel [(ngModel)]="modFormData.gender">
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+        <input type="text" class="inputField" name="hireDate" [(ngModel)]="modFormData.hireDate" placeholder="Hire date" required>
+        <input type="text" class="inputField" name="lastName" [(ngModel)]="modFormData.lastName" placeholder="Last name" required><br>
+        <button type="submit" class="submitBtn">Modify Employee</button>
+    </form>
+</div>
+
 <div class="employeeTable">
     <table>
         <tr>

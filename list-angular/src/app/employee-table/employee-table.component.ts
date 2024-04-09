@@ -24,6 +24,15 @@ export class EmployeeTableComponent {
     lastName : String
   };
 
+  modFormData : any = {
+    id : null,
+    birthDate : null,
+    firstName : null,
+    gender : null,
+    hireDate : null,
+    lastName : null
+  }
+
   constructor(private employeeService : EmployeeService) {}
 
   page : number = 0;
@@ -79,14 +88,39 @@ export class EmployeeTableComponent {
       this.totalPages = remoteData.page.totalPages;
     })
 
-    location.reload;
+    location.reload();
 
     form.resetForm();
   }
 
   modifyEmployee(item : any) : void {
     let id = item.id;
-    console.log(id);
+    
+    this.modFormData = {
+      id : item.id,
+      birthDate : item.birthDate,
+      firstName : item.firstName,
+      gender : item.gender,
+      hireDate : item.hireDate,
+      lastName : item.lastName
+
+    }
+
+    console.log(this.modFormData.id);
+  }
+
+  submitNewData(form : NgForm) : void {
+    console.log(JSON.stringify(form.value));
+    console.log(this.modFormData.id)
+    this.employeeService.put(JSON.stringify(form.value),this.modFormData.id).subscribe(remoteData => {
+      this.data = remoteData;
+      console.log(this.data);
+      this.totalPages = remoteData.page.totalPages;
+    })
+
+    location.reload();
+
+    form.resetForm();
   }
 
   changePage(delta : number) : void {

@@ -26,5 +26,14 @@ export class EmployeeService {
     return this.httpClient.post("http://localhost:8080/employees",body,httpOptions);
   }
 
+  put(body : any, id : number) : Observable<any> {
+    const httpOptions = {
+      headers : new HttpHeaders({
+        'Content-Type' : 'application/json'
+      })
+    };
+    return this.httpClient.put("http://localhost:8080/employees/"+id+"",body,httpOptions);
+  }
+
 
 }
